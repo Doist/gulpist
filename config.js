@@ -1,19 +1,21 @@
 module.exports = {
-  workDir: "../Todoist",
+
+  workDir: "../TeamCom",
 
   less: {
-    src: "todoist/apps/app_platform/static/apps/app_platform/css/*.less",
-    dist: "todoist/apps/app_platform/static/apps/app_platform/css"
+    src: "teamcom/apps/web/static/css/**/app.less",
+    dist: "teamcom/apps/web/static/css/"
   },
 
   coffee: {
-    src: "todoist/apps/app_platform/static/apps/app_platform/js/*.coffee",
-    dist: "todoist/apps/app_platform/static/apps/app_platform/js"
+    src: "teamcom/apps/web/static/js/**/*.coffee",
+    dist: "teamcom/apps/web/static/js/"
   },
 
   browserify: {
-    src: "./todoist/apps/app_platform/static/apps/app_platform/js/app.coffee",
-    dest: "todoist/apps/app_platform/static/apps/app_platform/js"
+    //browserify use different cwd, so path is configured differently
+    src: "./teamcom/apps/web/static/js/.coffee.app.js",
+    dist: "./teamcom/apps/web/static/js/"
   },
 
 }

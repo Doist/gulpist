@@ -10,18 +10,17 @@ var coffeeify = require('coffeeify');
 
 var config = require('../config').browserify
 
+var transform = require('vinyl-transform');
 
 
 gulp.task('browserify', function() {
     //rename output file with .coffee prefix and .js surffix (Doist Convention)
-    destFileName = ".coffee." + path.parse(config.src).name + ".js"
+    destFileName = "bundle.js"
 
     var bundler = browserify({
         entries: [config.src],
-
+        paths: ['../doist_gulp/node_modules'],
         //if you don't use jsx syntax in your .coffee, you could change it to coffeeify instead
-        transform: [coffeereact],
-
         debug: true,
         cache: {}, packageCache: {}, fullPaths: true // Requirement of watchify
     });
@@ -53,7 +52,7 @@ gulp.task('browserify', function() {
         title: "Broserify Error"
       }))
       .pipe(source(destFileName))
-      .pipe(gulp.dest(config.dest))
+      .pipe(gulp.dest(config.dist))
       .pipe(notify({
         title: "Broserify Bundle Created",
         message: "<%= file.relative %>"
@@ -61,3 +60,37 @@ gulp.task('browserify', function() {
 });
 
 
+
+/*
+var gulp = require('gulp');
+var gutil = require('gulp-util');
+var notify = require("gulp-notify");
+var debug = require('gulp-debug');
+var rename = require("gulp-rename");
+
+
+
+gulp.task('browserify', function() {
+
+  var browserified = transform(function(filename) {
+    var b = browserify(filename, {
+      paths: ['../doist_gulp/node_modules'],
+      debug: true
+    });
+    return b.bundle();
+  });
+
+  gulp.src(config.src)
+    .pipe(browserified)
+    .pipe(gulp.dest(config.dist))
+    .pipe(coffee({bare: true}))
+    .on('error', 
+      notify.onError( function (error) {
+        return "Coffee compile error: " + error.message;
+      })
+    )
+    .pipe(rename({
+      prefix: ".coffee."
+    }))
+});
+*/
