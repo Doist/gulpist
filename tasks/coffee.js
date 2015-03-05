@@ -7,14 +7,9 @@ var rename = require("gulp-rename");
 var config = require('../config').coffee
 
 
-var config = require('../config').coffee
-
-
-
 gulp.task('coffee', function() {
   gulp.src(config.src)
-    .pipe(debug({title: 'coffee files src'}))
-    .pipe(coffee({bare: true}))
+    .pipe(coffee())
     .on('error', 
       notify.onError( function (error) {
         return "Coffee compile error: " + error.message;
@@ -23,10 +18,10 @@ gulp.task('coffee', function() {
     .pipe(rename({
       prefix: ".coffee."
     }))
-    .pipe(gulp.dest(config.dist))
-    .pipe(debug({title: 'coffee files dist'}))
-    .pipe(notify("Coffee compile succeeded: <%= file.relative %>"));
+    .pipe(notify("Coffee compile succeeded: <%= file.relative %>"))
+    .pipe(gulp.dest(config.dist));
 });
+
 
 gulp.task("watch:coffee", function() {
   gulp.watch(config.src, ["coffee"])
