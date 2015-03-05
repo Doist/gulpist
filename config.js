@@ -1,5 +1,5 @@
 module.exports = {
-  workDir: "../",
+  workDir: "../Todoist",
 
   less: {
     src: "todoist/apps/app_platform/static/apps/app_platform/css/*.less",
@@ -15,13 +15,5 @@ module.exports = {
     src: "./todoist/apps/app_platform/static/apps/app_platform/js/app.coffee",
     dest: "todoist/apps/app_platform/static/apps/app_platform/js"
   },
-  
-  py_server_file: [
-    "todoist/*.py",
-  ],
 
-  staticPacks: [
-    "runtime/generated/Col_AppPlatformCollection.js",
-    "runtime/generated/Col_AppPlatformCollection.css",
-  ]
 }

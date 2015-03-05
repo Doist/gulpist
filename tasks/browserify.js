@@ -2,24 +2,26 @@ var gulp = require('gulp');
 var gutil = require('gulp-util');
 var notify = require("gulp-notify");
 var path = require('path');
-var coffeeify = require('coffeeify');
 var source = require('vinyl-source-stream');
 var browserify = require('browserify');
 var watchify = require('watchify');
-
 var coffeereact = require('coffee-reactify');
-
+var coffeeify = require('coffeeify');
 
 var config = require('../config').browserify
 
 
 
 gulp.task('browserify', function() {
+    //rename output file with .coffee prefix and .js surffix (Doist Convention)
     destFileName = ".coffee." + path.parse(config.src).name + ".js"
 
     var bundler = browserify({
         entries: [config.src],
+
+        //if you don't use jsx syntax in your .coffee, you could change it to coffeeify instead
         transform: [coffeereact],
+
         debug: true,
         cache: {}, packageCache: {}, fullPaths: true // Requirement of watchify
     });
