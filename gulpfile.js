@@ -7,5 +7,5 @@ requireDir('./tasks', { recurse: true });
 
 
 gulp.task('build', ['less', 'coffee']);
-gulp.task('watch', ['build', 'watch:less', 'watch:coffee']);
+gulp.task('watch', ['build', 'watch:less', 'watch:coffee', 'browserify']);
 

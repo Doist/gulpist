@@ -12,9 +12,7 @@ var rename = require("gulp-rename");
 var config = require('../config').browserify
 
 
-
 gulp.task('browserify', function() {
-
   destFileName = path.parse(config.dist).base
   destDir = path.parse(config.dist).dir
 
@@ -42,7 +40,7 @@ gulp.task('browserify', function() {
   });
 
   gulp.src(config.src)
-    .pipe(notify({title: "Broserify - Compling Bundld", message: "<%= file.relative %>"}))
+    //.pipe(notify({title: "Broserify - Compling Bundld", message: "<%= file.relative %>"}))
     .pipe(browserified)
     .pipe(rename(destFileName))
     .pipe(notify({title: "Broserify - Bundle Created", message: "<%= file.relative %>"}))
