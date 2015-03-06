@@ -15,7 +15,7 @@ function buildLess(is_incremental_build) {
       .pipe(gulpif(is_incremental_build, newer({ //only compile if source file is newer than dest file
         dest: config.dist,
         map: function(relativePath) {
-          return ".less." + path.parse(relativePath).name + ".css";
+          return path.parse(relativePath).dir + ".less." + path.parse(relativePath).name + ".css";
         }
       })))
       .pipe(less())

@@ -3,21 +3,6 @@ module.exports = {
   //your project directory relative to doist_gulp
   workDir: "../Todoist",
 
-  less: {
-    src: "teamcom/apps/web/static/css/**/app.less",
-    dist: "teamcom/apps/web/static/css/"
-  },
-
-  coffee: {
-    src: "teamcom/apps/web/static/js/**/*.coffee",
-    dist: "teamcom/apps/web/static/js/"
-  },
-
-  browserify: {
-    //browserify use different cwd, so path is configured differently
-    src: "./teamcom/apps/web/static/js/.coffee.app.js",
-    dist: "./teamcom/apps/web/static/js/"
-  },
 
   less: {
     src: "todoist/apps/app_platform/static/apps/app_platform/css/*.less",
@@ -35,6 +20,26 @@ module.exports = {
     dist: "./todoist/apps/app_platform/static/apps/app_platform/js/bundle.js"
   },
   
+
+
+
+  workDir: "../TeamCom",
+
+  less: {
+    src: "teamcom/apps/web/static/css/**/app.less",
+    dist: "teamcom/apps/web/static/css/"
+  },
+
+  coffee: {
+    src: "teamcom/apps/web/static/js/**/*.coffee",
+    dist: "teamcom/apps/web/static/js/"
+  },
+
+  browserify: {
+    //browserify use different cwd, so path is configured differently
+    src: "./teamcom/apps/web/static/js/.coffee.app.js",
+    dist: "./teamcom/apps/web/static/js/bundle.js"
+  },
 
 
 }

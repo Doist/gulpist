@@ -16,7 +16,7 @@ function buildCoffee(is_incremental_build) {
       .pipe(gulpif(is_incremental_build, newer({ //only compile if source file is newer than dest file
         dest: config.dist,
         map: function(relativePath) {
-          return ".coffee." + path.parse(relativePath).name + ".js"
+          return path.parse(relativePath).dir + "/.coffee." + path.parse(relativePath).name + ".js"
         }
       })))
       .pipe(coffee())
