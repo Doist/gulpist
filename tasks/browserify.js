@@ -7,12 +7,59 @@ var browserify = require('browserify');
 var watchify = require('watchify');
 var coffeereact = require('coffee-reactify');
 var coffeeify = require('coffeeify');
+var transform = require('vinyl-transform');
+var rename = require("gulp-rename");
 
 var config = require('../config').browserify
 
-var transform = require('vinyl-transform');
+gulp.task('browserify', function() {
+
+  var browserified = transform(function(filename) {
+
+    destFileName = "bundle.js"
+
+    var bundler = browserify(filename, {
+      paths: ['../doist_gulp/node_modules'],
+      debug: true,
+      cache: {}, packageCache: {}, fullPaths: true // Requirement of watchify
+    });
+    
+    //return bundler.bundle();
+
+    var watcher  = watchify(bundler);
+
+    return watcher
+          .on('update', function () { // When any files update
+              console.log('Watchify detect updated. Rebundle...');
+              var updateStart = Date.now();
+
+              watcher.bundle()
+                     .on("error", notify.onError({
+                        message: "<%= error.message %>",
+                        title: "Broserify Error"
+                     }))
+
+              console.log('Rebundle finished!', (Date.now() - updateStart) + 'ms');
+          })
+          .bundle()
+          .on("error", notify.onError({
+            message: "<%= error.message %>",
+            title: "Broserify Error"
+          }))
+  });
+
+  gulp.src(config.src)
+    .pipe(browserified)
+    .pipe(rename("bundle.js"))
+    .pipe(gulp.dest(config.dist))
+    .pipe(notify({
+      title: "Broserify Bundle Created",
+      message: "<%= file.relative %>"
+    }));
+});
 
 
+/*
 gulp.task('browserify', function() {
     //rename output file with .coffee prefix and .js surffix (Doist Convention)
     destFileName = "bundle.js"
@@ -38,7 +85,7 @@ gulp.task('browserify', function() {
                     title: "Broserify Error"
                  }))
                  .pipe(source(destFileName))
-                 .pipe(gulp.dest(config.dest))
+                 .pipe(gulp.dest(config.dist))
                  .pipe(notify({
                     title: "Broserify Bundle Created",
                     message: "<%= file.relative %>"
@@ -58,7 +105,7 @@ gulp.task('browserify', function() {
         message: "<%= file.relative %>"
       }));
 });
-
+*/
 
 
 /*
