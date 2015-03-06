@@ -11,40 +11,48 @@ var transform = require('vinyl-transform');
 var rename = require("gulp-rename");
 var config = require('../config').browserify
 
+function browserifyBuild(incremental_build) {
 
-gulp.task('browserify', function() {
-  destFileName = path.parse(config.dist).base
-  destDir = path.parse(config.dist).dir
+  return function() {
+    destFileName = path.parse(config.dist).base
+    destDir = path.parse(config.dist).dir
 
-  //transform browserify bundler into vinyl stream
-  var browserified = transform(function(filename) {
+    //transform browserify bundler into vinyl stream
+    var browserified = transform(function(filename) {
 
-    var bundler = browserify(filename, {
-      paths: ['../doist_gulp/node_modules'],  //TODO: remove this
-      debug: true,
-      cache: {}, packageCache: {}, fullPaths: true // Requirement of watchify
+      var bundler = browserify(filename, {
+        paths: ['../doist_gulp/node_modules'],  //TODO: remove this
+        debug: true,
+        cache: {}, packageCache: {}, fullPaths: true // Requirement of watchify
+      });
+      
+      if(incremental_build) {
+        bundler  = watchify(bundler);
+      }
+
+      return bundler
+            .on('update', function () { // When any files update
+                bundler.bundle()
+                       .pipe(source(destFileName))
+                       .pipe(gulp.dest(destDir))
+                       .pipe(notify({title: "Broserify - Bundle Updated", message: "<%= file.relative %>"}))
+                       .on("error", notify.onError({title: "Broserify Error", message: "<%= error.message %>"}))
+            })
+            .bundle()
+            .on("error", notify.onError({title: "Broserify Error", message: "<%= error.message %>"}))
     });
-    
-    var watcher  = watchify(bundler);
 
-    return watcher
-          .on('update', function () { // When any files update
-              watcher.bundle()
-                     .pipe(source(destFileName))
-                     .pipe(gulp.dest(destDir))
-                     .pipe(notify({title: "Broserify - Bundle Updated", message: "<%= file.relative %>"}))
-                     .on("error", notify.onError({title: "Broserify Error", message: "<%= error.message %>"}))
-          })
-          .bundle()
-          .on("error", notify.onError({title: "Broserify Error", message: "<%= error.message %>"}))
-  });
+    gulp.src(config.src)
+      //.pipe(notify({title: "Broserify - Compling Bundld", message: "<%= file.relative %>"}))
+      .pipe(browserified)
+      .pipe(rename(destFileName))
+      .pipe(notify({title: "Broserify - Bundle Created", message: "<%= file.relative %>"}))
+      .pipe(gulp.dest(destDir));
 
-  gulp.src(config.src)
-    //.pipe(notify({title: "Broserify - Compling Bundld", message: "<%= file.relative %>"}))
-    .pipe(browserified)
-    .pipe(rename(destFileName))
-    .pipe(notify({title: "Broserify - Bundle Created", message: "<%= file.relative %>"}))
-    .pipe(gulp.dest(destDir));
+  };
 
-});
+};
+
+gulp.task('browserify', browserifyBuild(false));
+gulp.task('watch:browserify', browserifyBuild(true));
 
