@@ -19,6 +19,10 @@ module.exports = {
     dist: "./teamcom/apps/web/static/js/"
   },
 
+  less: {
+    src: "todoist/apps/app_platform/static/apps/app_platform/css/*.less",
+    dist: "todoist/apps/app_platform/static/apps/app_platform/css"
+  },
 
   coffee: {
     src: "todoist/apps/app_platform/static/apps/app_platform/js/*.coffee",

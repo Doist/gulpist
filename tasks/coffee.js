@@ -5,9 +5,9 @@ var notify = require("gulp-notify");
 var debug = require('gulp-debug');
 var coffee = require('gulp-coffee');
 var rename = require("gulp-rename");
+var newer = require('gulp-newer');
 var config = require('../config').coffee
 
-var newer = require('gulp-newer');
 
 
 
