@@ -7,9 +7,18 @@ var coffee = require('gulp-coffee');
 var rename = require("gulp-rename");
 var config = require('../config').coffee
 
+var newer = require('gulp-newer');
+
+
 
 gulp.task('coffee', function() {
   gulp.src(config.src)
+    .pipe(newer({ //only compile if source file is newer than dest file
+      dest: config.dist,
+      map: function(relativePath) {
+        return ".coffee." + path.parse(relativePath).name + ".js"
+      }
+    }))
     .pipe(coffee())
     .on("error", notify.onError({
         title: "Coffee Error",  
