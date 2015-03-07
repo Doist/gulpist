@@ -8,6 +8,10 @@ var rename = require("gulp-rename");
 var newer = require('gulp-newer');
 var gulpif = require('gulp-if');
 var config = require('../config').coffee
+var browserSync = require('browser-sync');
+
+var coffeeJSX = require('gulp-cjsx');
+
 
 
 function buildCoffee(is_incremental_build) {
@@ -19,7 +23,8 @@ function buildCoffee(is_incremental_build) {
           return path.parse(relativePath).dir + "/.coffee." + path.parse(relativePath).name + ".js"
         }
       })))
-      .pipe(coffee())
+      //.pipe(coffee({bare: true}))
+      .pipe(coffeeJSX({bare: true}))
       .on("error", notify.onError({
           title: "Coffee Error",  
           subtitle: function(error) {
@@ -30,7 +35,8 @@ function buildCoffee(is_incremental_build) {
       }))
       .pipe(rename({prefix: ".coffee."}))
       .pipe(notify({title:"Coffee", message: "Coffee compile succeeded: <%= file.relative %>"}))
-      .pipe(gulp.dest(config.dist));
+      .pipe(gulp.dest(config.dist))
+      .pipe(browserSync.reload({stream:true}));
   };
 }
 
