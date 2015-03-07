@@ -21,7 +21,6 @@ function browserifyBuild(incremental_build) {
     var browserified = transform(function(filename) {
 
       var bundler = browserify(filename, {
-        paths: ['../doist_gulp/node_modules'],  //TODO: remove this
         debug: true,
         cache: {}, packageCache: {}, fullPaths: true // Requirement of watchify
       });
