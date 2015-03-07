@@ -22,3 +22,10 @@ gulp.task('watch', function(callback){
 });
 
 
+gulp.task('sync', function(callback){
+  runSequence(['browser-sync', 'watch:less', 'watch:coffee'],
+              'watch:browserify',
+              callback);
+});
+
+
