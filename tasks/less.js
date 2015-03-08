@@ -10,28 +10,26 @@ var config = require('../config').less
 
 function buildLess(is_incremental_build) {
 
-  return function() {
-    return gulp.src(config.src)
-      .pipe(gulpif(is_incremental_build, newer({ //only compile if source file is newer than dest file
-        dest: config.dest,
-        map: function(relativePath) {
-          return path.parse(relativePath).dir + ".less." + path.parse(relativePath).name + ".css";
-        }
-      })))
-      .pipe(less())
-      .pipe(rename({prefix: config.destFilePrefix}))
-      .pipe(gulp.dest(config.dest))
-      .pipe(notify("LESS compiled: <%= file.relative %>"));
-  }
+  return gulp.src(config.src)
+    .pipe(gulpif(is_incremental_build, newer({ //only compile if source file is newer than dest file
+      dest: config.dest,
+      map: function(relativePath) {
+        return path.parse(relativePath).dir + ".less." + path.parse(relativePath).name + ".css";
+      }
+    })))
+    .pipe(less())
+    .pipe(rename({prefix: config.destFilePrefix}))
+    .pipe(gulp.dest(config.dest))
+    .pipe(notify("LESS compiled: <%= file.relative %>"));
 
 }
 
 
-gulp.task('less', buildLess(false));
+gulp.task('less', function() { return buildLess(false); });
 
 gulp.task("less:watch", function() {
-  buildLess(false)();
+  buildLess(false);
   filesToWatch = config.hasOwnProperty("watch") ? config.watch : config.src;
-  gulp.watch(filesToWatch, buildLess(true))
+  gulp.watch(filesToWatch, function() { buildLess(true) })
 });
 
