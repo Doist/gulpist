@@ -29,7 +29,7 @@ function buildLess(is_incremental_build) {
 
 gulp.task('less', buildLess(false));
 
-gulp.task("watch:less", function() {
+gulp.task("less:watch", function() {
   buildLess(false)();
   filesToWatch = config.hasOwnProperty("watch") ? config.watch : config.src;
   gulp.watch(filesToWatch, buildLess(true))

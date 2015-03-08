@@ -5,8 +5,6 @@ var path = require('path');
 var source = require('vinyl-source-stream');
 var browserify = require('browserify');
 var watchify = require('watchify');
-var coffeereact = require('coffee-reactify');
-var coffeeify = require('coffeeify');
 var transform = require('vinyl-transform');
 var rename = require("gulp-rename");
 var config = require('../config').browserify
@@ -54,5 +52,5 @@ function browserifyBuild(incremental_build) {
 };
 
 gulp.task('browserify', browserifyBuild(false));
-gulp.task('watch:browserify', browserifyBuild(true));
+gulp.task('browserify:watch', browserifyBuild(true));
 

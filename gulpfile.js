@@ -8,7 +8,6 @@ requireDir('./tasks', { recurse: true });
 
 
 gulp.task('build', function(callback){
-
   //here we only want browserify run after coffee complete
   runSequence(['less', 'coffee'],
               'browserify',
@@ -16,16 +15,16 @@ gulp.task('build', function(callback){
 });
 
 gulp.task('watch', function(callback){
-  runSequence(['watch:less', 'watch:coffee'],
-              'watch:browserify',
+  runSequence(['less:watch', 'coffee:watch'],
+              'browserify:watch',
               callback);
 });
 
 
+/*
 gulp.task('sync', function(callback){
-  runSequence(['browser-sync', 'watch:less', 'watch:coffee'],
+  runSequence(['browser-sync', 'less:watch', 'coffee:watch'],
               'watch:browserify',
               callback);
 });
-
-
+*/

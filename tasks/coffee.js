@@ -43,7 +43,7 @@ function buildCoffee(is_incremental_build) {
 
 gulp.task('coffee', buildCoffee(false));
 
-gulp.task("watch:coffee", function() {
+gulp.task("coffee:watch", function() {
   buildCoffee(false)();
   gulp.watch(config.src, buildCoffee(true))
 });
