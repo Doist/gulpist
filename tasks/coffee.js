@@ -9,6 +9,7 @@ var newer = require('gulp-newer');
 var gulpif = require('gulp-if');
 var config = require('../config').coffee
 var browserSync = require('browser-sync');
+var runSequence = require('run-sequence');
 
 var coffeeJSX = require('gulp-cjsx');
 
@@ -43,11 +44,13 @@ gulp.task('coffee', function() {
   return buildCoffee(false)
 });
 
-gulp.task("coffee:watch", function() {
-  buildCoffee(false);
-
+gulp.task('_coffee:watch', function() {
   gulp.watch(config.src, function(){
-    buildCoffee(true);
+    return buildCoffee(true);
   })
+});
+
+gulp.task("coffee:watch", function(callback) {
+  runSequence('coffee', '_coffee:watch', callback)
 });
 

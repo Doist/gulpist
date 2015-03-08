@@ -6,6 +6,7 @@ var notify = require("gulp-notify");
 var path = require('path');
 var newer = require('gulp-newer');
 var config = require('../config').less
+var runSequence = require('run-sequence');
 
 
 function buildLess(is_incremental_build) {
@@ -27,9 +28,14 @@ function buildLess(is_incremental_build) {
 
 gulp.task('less', function() { return buildLess(false); });
 
-gulp.task("less:watch", function() {
-  buildLess(false);
+
+gulp.task('_less:watch', function() {
   filesToWatch = config.hasOwnProperty("watch") ? config.watch : config.src;
   gulp.watch(filesToWatch, function() { buildLess(true) })
+});
+
+
+gulp.task("less:watch", function(callback) {
+  runSequence('less', '_less:watch', callback)
 });
 
