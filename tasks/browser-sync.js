@@ -8,10 +8,7 @@ gulp.task('browser-sync', function() {
         ui: {
             port: 4000
         },
-        scriptPath: function (path, port, options) {
-          console.log(options.get("absolute"));
-          return options.get("absolute");
-        }
+        proxy: "local.todoist.com"
     });
 });
 

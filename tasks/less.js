@@ -7,11 +7,13 @@ var path = require('path');
 var newer = require('gulp-newer');
 var config = require('../config').less
 var runSequence = require('run-sequence');
+var browserSync = require('browser-sync');
 
 
 function buildLess(is_incremental_build) {
 
   return gulp.src(config.src)
+    .on('end', browserSync.reload)
     .pipe(gulpif(is_incremental_build, newer({ //only compile if source file is newer than dest file
       dest: config.dest,
       map: function(relativePath) {
@@ -22,7 +24,6 @@ function buildLess(is_incremental_build) {
     .pipe(rename({prefix: config.destFilePrefix}))
     .pipe(gulp.dest(config.dest))
     .pipe(notify("LESS compiled: <%= file.relative %>"));
-
 }
 
 

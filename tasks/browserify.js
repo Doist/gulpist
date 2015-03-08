@@ -8,6 +8,8 @@ var watchify = require('watchify');
 var transform = require('vinyl-transform');
 var rename = require("gulp-rename");
 var config = require('../config').browserify
+var browserSync = require('browser-sync');
+
 
 function browserifyBuild(incremental_build) {
 
@@ -31,6 +33,7 @@ function browserifyBuild(incremental_build) {
       return bundler
             .on('update', function () { // When any files update
                 bundler.bundle()
+                       .on('end', browserSync.reload)
                        .pipe(source(destFileName))
                        .pipe(gulp.dest(destDir))
                        .pipe(notify({title: "Broserify - Bundle Updated", message: "<%= file.relative %>"}))
@@ -38,6 +41,7 @@ function browserifyBuild(incremental_build) {
             })
             .bundle()
             .on("error", notify.onError({title: "Broserify Error", message: "<%= error.message %>"}))
+            .pipe(browserSync.reload({stream:true}));
     });
 
     gulp.src(sourceFilePath)
@@ -45,6 +49,7 @@ function browserifyBuild(incremental_build) {
       .pipe(browserified)
       .pipe(rename(destFileName))
       .pipe(notify({title: "Broserify - Bundle Created", message: "<%= file.relative %>"}))
+      .on('end', browserSync.reload)
       .pipe(gulp.dest(destDir));
 
   };

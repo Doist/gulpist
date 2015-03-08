@@ -17,6 +17,7 @@ var coffeeJSX = require('gulp-cjsx');
 
 function buildCoffee(is_incremental_build) {
   return gulp.src(config.src)
+    .on('end', browserSync.reload)
     .pipe(gulpif(is_incremental_build, newer({ //only compile if source file is newer than dest file
       dest: config.dest,
       map: function(relativePath) {
