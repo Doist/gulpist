@@ -13,16 +13,14 @@ function buildLess(is_incremental_build) {
   return function() {
     return gulp.src(config.src)
       .pipe(gulpif(is_incremental_build, newer({ //only compile if source file is newer than dest file
-        dest: config.dist,
+        dest: config.dest,
         map: function(relativePath) {
           return path.parse(relativePath).dir + ".less." + path.parse(relativePath).name + ".css";
         }
       })))
       .pipe(less())
-      .pipe(rename({
-        prefix: ".less."
-      }))
-      .pipe(gulp.dest(config.dist))
+      .pipe(rename({prefix: config.destFilePrefix}))
+      .pipe(gulp.dest(config.dest))
       .pipe(notify("LESS compiled: <%= file.relative %>"));
   }
 
@@ -33,6 +31,7 @@ gulp.task('less', buildLess(false));
 
 gulp.task("watch:less", function() {
   buildLess(false)();
-  gulp.watch(config.src, buildLess(true))
+  filesToWatch = config.hasOwnProperty("watch") ? config.watch : config.src;
+  gulp.watch(filesToWatch, buildLess(true))
 });
 

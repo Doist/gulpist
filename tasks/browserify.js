@@ -14,8 +14,9 @@ var config = require('../config').browserify
 function browserifyBuild(incremental_build) {
 
   return function() {
-    destFileName = path.parse(config.dist).base
-    destDir = path.parse(config.dist).dir
+    sourceFilePath = "./" + (config.src)  //Browserify required file path with ./
+    destDir = "./" + path.parse(config.dest).dir
+    destFileName = path.parse(config.dest).base
 
     //transform browserify bundler into vinyl stream
     var browserified = transform(function(filename) {
@@ -41,7 +42,7 @@ function browserifyBuild(incremental_build) {
             .on("error", notify.onError({title: "Broserify Error", message: "<%= error.message %>"}))
     });
 
-    gulp.src(config.src)
+    gulp.src(sourceFilePath)
       //.pipe(notify({title: "Broserify - Compling Bundld", message: "<%= file.relative %>"}))
       .pipe(browserified)
       .pipe(rename(destFileName))

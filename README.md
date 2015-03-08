@@ -3,3 +3,5 @@ Problems
  is changed, the main file should be recompiled again.
 
  - Browserify: how to import node_module dependency
+
+ - Coffee: i18n get text _()

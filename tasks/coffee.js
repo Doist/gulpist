@@ -18,7 +18,7 @@ function buildCoffee(is_incremental_build) {
   return function() {
     gulp.src(config.src)
       .pipe(gulpif(is_incremental_build, newer({ //only compile if source file is newer than dest file
-        dest: config.dist,
+        dest: config.dest,
         map: function(relativePath) {
           return path.parse(relativePath).dir + "/.coffee." + path.parse(relativePath).name + ".js"
         }
@@ -33,9 +33,9 @@ function buildCoffee(is_incremental_build) {
           },
           message: "<%= error.name %>: <%= error.message %>"
       }))
-      .pipe(rename({prefix: ".coffee."}))
+      .pipe(rename({prefix: config.destFilePrefix}))
       .pipe(notify({title:"Coffee", message: "Coffee compile succeeded: <%= file.relative %>"}))
-      .pipe(gulp.dest(config.dist))
+      .pipe(gulp.dest(config.dest))
       .pipe(browserSync.reload({stream:true}));
   };
 }
