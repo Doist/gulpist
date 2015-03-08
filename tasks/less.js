@@ -21,7 +21,7 @@ function buildLess(is_incremental_build) {
       }
     })))
     .pipe(less())
-    .pipe(rename({prefix: config.destFilePrefix}))
+    .pipe(rename({prefix: config.prefix}))
     .pipe(gulp.dest(config.dest))
     .pipe(notify("LESS compiled: <%= file.relative %>"));
 }

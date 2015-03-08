@@ -34,7 +34,7 @@ function buildCoffee(is_incremental_build) {
         },
         message: "<%= error.name %>: <%= error.message %>"
     }))
-    .pipe(rename({prefix: config.destFilePrefix}))
+    .pipe(rename({prefix: config.prefix}))
     .pipe(notify({title:"Coffee", message: "Coffee compile succeeded: <%= file.relative %>"}))
     .pipe(gulp.dest(config.dest))
     .pipe(browserSync.reload({stream:true}));

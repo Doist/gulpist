@@ -14,6 +14,7 @@ gulp.task('build', function(callback){
               callback);
 });
 
+
 gulp.task('watch', function(callback){
   runSequence(['less:watch', 'coffee:watch'],
               'browserify:watch',
@@ -21,4 +22,6 @@ gulp.task('watch', function(callback){
 });
 
 
+//Note: To make sure BrowserSync work well with session cookie, in 
+//your conifg_custom.py add  "COOKIE_DOMAIN = None"
 gulp.task('sync', ['watch', 'browser-sync']);
