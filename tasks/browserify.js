@@ -40,8 +40,7 @@ function browserifyBuild(incremental_build) {
                        .on("error", notify.onError({title: "Broserify Error", message: "<%= error.message %>"}))
             })
             .bundle()
-            .on("error", notify.onError({title: "Broserify Error", message: "<%= error.message %>"}))
-            .pipe(browserSync.reload({stream:true}));
+            .on("error", notify.onError({title: "Broserify Error", message: "<%= error.message %>"}));
     });
 
     gulp.src(sourceFilePath)

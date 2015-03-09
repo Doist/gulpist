@@ -51,10 +51,10 @@ module.exports = {
   },
 
 
+  /*
   //your project directory relative to doist_gulp
   workDir: "../Todoist",
 
-  /*
   less: {
     src: "todoist/apps/static_apps/landing_pages/static/apps/landing_pages/css/*.less",
     dest: "todoist/apps/static_apps/landing_pages/static/apps/landing_pages/css/"
@@ -64,7 +64,6 @@ module.exports = {
     src: "todoist/apps/static_apps/serial_promotions/static/js/*.coffee",
     dest: "todoist/apps/static_apps/serial_promotions/static/js",
   },
-  */
 
   less: {
     src: "todoist/apps/app_platform/static/apps/app_platform/css/*.less",
@@ -86,5 +85,6 @@ module.exports = {
     src: "./todoist/apps/app_platform/static/apps/app_platform/js/.coffee.app.js",
     dest: "./todoist/apps/app_platform/static/apps/app_platform/js/bundle.js"
   },
+  */
 
 }
