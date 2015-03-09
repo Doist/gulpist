@@ -32,13 +32,16 @@ All the Gulp tasks are run in the follow command syntax
 gulp [task name]
 ```
 
-Three major tasks have been configure in `gulpfile.js`:
+Three major tasks have been configured in `gulpfile.js`:
 
-- `gulp build` Compiles all the static assets (less, coffee, browserify)
+`gulp build` 
+Compiles all the static assets (less, coffee, browserify)
 
-- `gulp watch` Compiles all the assets and also start file watch process. File change events will trigger compilation tasks.
+`gulp watch` 
+Compiles all the assets and also start file watch process. File change events will trigger compilation tasks.
 
-- `gulp sync` Same as `gulp watch`, but it will also start a BrowserSync server which will reload your browser when asset compilation is done.
+`gulp sync` 
+Same as `gulp watch`, but it will also start a BrowserSync server which will reload your browser when asset compilation is done.
 
 Feel free to edit `gulpfile.js` to configure what tasks to be run for each of these three major tasks. You can remove the tasks that you don’t want to run.
 
