@@ -8,30 +8,24 @@ Since it is just a regular Node.js program, Gulp is extremely flexible of what i
 
 
 
-# Setup
+# Get Started
 
-##### Requirement 
+### Requirement 
 - [Node.js](https://nodejs.org/)
 - [Gulp](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)
 
-##### Install
+### Install
 At your doist_gulp directory, install required Node dependencies:
 ```
 npm install
 ```
 
 
-# Gulp Directory Structure
-- `gulpfile.js` The main entry point of Gulp. 
-- `config.js` Contains the configuration for all tasks. 
-- `tasks/` This directory contains codes for each individual tasks (LESS, Coffee, Browserify…etc).
-
-
-# Run 
-##### Tasks configuration before you started.
+# Run Gulp
+### Tasks configuration before you started.
 `config.js` contains configuration for all the tasks. There you specified things like path of your source .less .coffee.
 
-##### Start Gulp
+### Start Gulp
 All the Gulp tasks are run in the follow command syntax
 
 ```
@@ -48,11 +42,19 @@ Three major tasks have been configure in `gulpfile.js`:
 
 Feel free to edit `gulpfile.js` to configure what tasks to be run for each of these three major tasks. You can remove the tasks that you don’t want to run.
 
-
-###### Running Small Individual Tasks.
+### Running Small Individual Tasks.
 `tasks/` directory contains tasks that could be run individually as well. 
 
-For instance, `tasks/coffee.js` contains “coffee” and “coffee:watch” tasks.
+For instance, if you only need to build .coffee, you could only run the “coffee” task (which is in `coffee.js`)
+```
+gulp coffee
+``` 
+
+
+# Gulp Directory Structure
+- `gulpfile.js` The main entry point of Gulp. 
+- `config.js` Contains the configuration for all tasks. 
+- `tasks/` This directory contains codes for each individual tasks (LESS, Coffee, Browserify…etc).
 
 
 # TODO:
