@@ -58,3 +58,9 @@ gulp coffee
 - `config.js` Contains the configuration for all tasks. 
 - `tasks/` This directory contains codes for each individual tasks (LESS, Coffee, Browserify…etc).
 
+
+
+
+# TODO
+- Provide 'build-dist' task that built asset for production usage (i.e: discard source map)
+

@@ -17,7 +17,6 @@ var coffeeJSX = require('gulp-cjsx');
 
 function buildCoffee(is_incremental_build) {
   return gulp.src(config.src)
-    .on('end', browserSync.reload)
     .pipe(gulpif(is_incremental_build, newer({ //only compile if source file is newer than dest file
       dest: config.dest,
       map: function(relativePath) {
@@ -29,15 +28,16 @@ function buildCoffee(is_incremental_build) {
     .on("error", notify.onError({
         title: "Coffee Error",  
         subtitle: function(error) {
-          var filename = path.parse(error.filename).base;
-          return filename
+          if (error.filename) {
+            var filename = path.parse(error.filename).base;
+            return filename
+          }
         },
-        message: "<%= error.name %>: <%= error.message %>"
+        message: "<%= error.name %>: <%= error.message %> \n <%= error %>"
     }))
     .pipe(rename({prefix: config.prefix}))
     .pipe(notify({title:"Coffee", message: "Coffee compile succeeded: <%= file.relative %>"}))
-    .pipe(gulp.dest(config.dest))
-    .pipe(browserSync.reload({stream:true}));
+    .pipe(gulp.dest(config.dest));
 }
 
 
