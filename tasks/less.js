@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var autoprefixer = require('gulp-autoprefixer');
 var gulpif = require('gulp-if');
 var less = require('gulp-less');
 var rename = require("gulp-rename");
@@ -11,23 +12,23 @@ var browserSync = require('browser-sync');
 
 
 function buildLess(is_incremental_build) {
-
   return gulp.src(config.src)
     .on('end', browserSync.reload)
-    .pipe(gulpif(is_incremental_build, newer({ //only compile if source file is newer than dest file
-      dest: config.dest,
-      map: function(relativePath) {
-        return path.parse(relativePath).dir + ".less." + path.parse(relativePath).name + ".css";
-      }
-    })))
+    // .pipe(gulpif(is_incremental_build, newer({ //only compile if source file is newer than dest file
+    //   dest: config.dest,
+    //   map: function(relativePath) {
+    //     return path.parse(relativePath).dir + ".less." + path.parse(relativePath).name + ".css";
+    //   }
+    // })))
     .pipe(less())
     .pipe(rename({prefix: config.prefix}))
+    .pipe(autoprefixer())
     .pipe(gulp.dest(config.dest))
     .pipe(notify("LESS compiled: <%= file.relative %>"));
 }
 
 
-gulp.task('less', function() { return buildLess(false); });
+gulp.task('less', function() { return buildLess(true); });
 
 
 gulp.task('_less:watch', function() {
@@ -39,4 +40,3 @@ gulp.task('_less:watch', function() {
 gulp.task("less:watch", function(callback) {
   runSequence('less', '_less:watch', callback)
 });
-
