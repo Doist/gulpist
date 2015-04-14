@@ -11,7 +11,7 @@ var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
 
 
-function buildLess(is_incremental_build) {
+function buildLess() {
   return gulp.src(config.src)
     .on('end', browserSync.reload)
     .pipe(less())
@@ -22,12 +22,12 @@ function buildLess(is_incremental_build) {
 }
 
 
-gulp.task('less', function() { return buildLess(true); });
+gulp.task('less', function() { return buildLess(); });
 
 
 gulp.task('_less:watch', function() {
   filesToWatch = config.hasOwnProperty("watch") ? config.watch : config.src;
-  gulp.watch(filesToWatch, function() { buildLess(true) })
+  gulp.watch(filesToWatch, function() { buildLess() })
 });
 
 
