@@ -20,7 +20,7 @@ function browserifyTask(runWatcher, distBuild) {
     var sourceFilePath = "./" + config.src;
     var dest = path.parse(config.dest);
     var destDir = "./" + dest.dir;
-    var destFileName = distBuild ? (dest.name + ".mim" + dest.ext) : dest.base;
+    var destFileName = distBuild ? (dest.name + ".min" + dest.ext) : dest.base;
 
     var bundler = browserify({
         entries: [sourceFilePath],
