@@ -1,7 +1,7 @@
 try {
     config = require('./config');
 } catch(e) {
-    console.error("Error: required task configuration file (config.js) is not found.");
+    console.error("config.js Error: " + e);
     process.exit();
 }
 
