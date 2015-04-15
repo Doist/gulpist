@@ -9,6 +9,7 @@ Gulpist is built on [Gulp](https://github.com/gulpjs/gulp/blob/master/docs/getti
 # Get Started
 
 System Requirement 
+
 - [Node.js](https://nodejs.org/)
 - [Gulp](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)
 
@@ -18,8 +19,7 @@ npm install
 ```
 
 #### 2. Task Configuration
-Copy `config.example.js` file to `config.js`. It contains configuration for all the tasks. There you specified things like path of your source .less .coffee. 
-```
+Copy `config.example.js` file into `config.js`. This file contains configuration for all the tasks.
 
 
 # Run Gulp
@@ -29,13 +29,15 @@ All the Gulp tasks are run in the follow command syntax
 gulp [task name]
 ```
 
-Here is a list of tasks that we currently support
+Here is a list of tasks that are currently supported
+
 - `gulp less`, `gulp less:watch`:  Compile LESS file
 - `gulp coffee`, `gulp coffee:watch`:  Compile LESS file
 - `gulp browserify`: Create a development bundle (with source map), and production bundle (uglified).
 - `gulp browserify:watch`:  Create __only__ the  development bundle, and watch for file change to rebuild.
 
-Batch Task:
+Batch Tasks:
+
 - `gulp build`: Run "less", "coffee", "browserify" tasks
 - `gulp watch` Run "less:watch", "coffee:watch", "browserify:watch" tasks
 - `gulp sync` Same as `gulp watch`, but it will also start a BrowserSync server which will reload your browser when asset compilation is done.
