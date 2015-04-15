@@ -12,10 +12,9 @@ Gulpist is built on [Gulp](https://github.com/gulpjs/gulp/blob/master/docs/getti
 - [Gulp](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)
 
 ### Install Node Dependencies
-At your doist_gulp directory, install required Node dependencies:
 ```
 npm install
-
+```
 
 ### Task Configuration
 Copy `config.example.js` file to `config.js`. It contains configuration for all the tasks. There you specified things like path of your source .less .coffee. 
@@ -23,7 +22,6 @@ Copy `config.example.js` file to `config.js`. It contains configuration for all 
 
 
 # Run Gulp
-### Start Gulp
 All the Gulp tasks are run in the follow command syntax
 
 ```
