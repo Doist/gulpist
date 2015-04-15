@@ -46,8 +46,3 @@ Batch Tasks:
 Feel free to edit `gulpfile.js` to configure what tasks to be run for each of these three major tasks. You can remove the tasks that you don’t want to run.
 
 
-# TODO
-- Provide 'build-dist' task that built asset for production usage (i.e: discard source map)
-- CSS CDN path replace (Look for path pattern "/static/amilib_images/images/4_bubble_left.png")
-- JS CDN path replace ($static_path)
-
