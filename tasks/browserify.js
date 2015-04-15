@@ -49,12 +49,9 @@ function browserifyTask(runWatcher, distBuild) {
 
 gulp.task('browserify', function() {
   browserifyTask(false, false);
+  browserifyTask(false, true);
 });
 
 gulp.task('browserify:watch', function() {
   browserifyTask(true, false);
-});
-
-gulp.task('browserify:dist', function() {
-  browserifyTask(false, true);
 });

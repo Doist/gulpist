@@ -25,24 +25,19 @@ var buildSeq1 = []
 var buildSeq2 = []
 var watchSeq1 = []
 var watchSeq2 = []
-var buildDistSeq1 = []
-var buildDistSeq2 = []
 
 if(config.hasOwnProperty("less")) {
   buildSeq1.push("less")
-  buildDistSeq1.push("less")
   watchSeq1.push("less:watch")
 }
 
 if(config.hasOwnProperty("coffee")) {
   buildSeq1.push("coffee")
-  buildDistSeq1.push("coffee")
   watchSeq1.push("coffee:watch")
 }
 
 if(config.hasOwnProperty("browserify")) {
   buildSeq2.push("browserify")
-  buildDistSeq2.push("browserify:dist")
   watchSeq2.push("browserify:watch")
 }
 
@@ -66,11 +61,6 @@ function runTwoSequences(seq1, seq2, callback) {
 gulp.task('build', function(callback){
   runTwoSequences(buildSeq1, buildSeq2, callback)
 });
-
-gulp.task('build:dist', function(callback){
-  runTwoSequences(buildDistSeq1, buildDistSeq2, callback)
-});
-
 
 gulp.task('watch', function(callback){
   runTwoSequences(watchSeq1, watchSeq2, callback)
