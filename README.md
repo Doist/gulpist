@@ -29,7 +29,8 @@ All the Gulp tasks are run in the follow command syntax
 gulp [task name]
 ```
 
-Here is a list of tasks that are currently supported
+Here is a list of tasks that are currently supported. Task with `:watch` suffix means it will continuous 
+watch for file change and rerun the task when changes occurred.
 
 - `gulp less`, `gulp less:watch`:  Compile LESS file
 - `gulp coffee`, `gulp coffee:watch`:  Compile LESS file
