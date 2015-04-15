@@ -1,5 +1,18 @@
+try {
+    config = require('./config');
+} catch(e) {
+    console.error("Error: required task configuration file (config.js) is not found.");
+    process.exit();
+}
+
+try {
+  config.validateConfig();
+} catch(e) {
+  console.error("Error: " + e);
+  process.exit();
+}
+
 var gulp = require('gulp');
-var config = require('./config')
 var requireDir = require('require-dir')
 var runSequence = require('run-sequence');
 
@@ -7,21 +20,54 @@ process.chdir(config.workDir);
 requireDir('./tasks', { recurse: true });
 
 
+// Figure out which tasks to run based on config
+var buildSeq1 = []
+var buildSeq2 = []
+var watchSeq1 = []
+var watchSeq2 = []
+
+if(config.hasOwnProperty("less")) {
+  buildSeq1.push("less")
+  watchSeq1.push("less:watch")
+}
+
+if(config.hasOwnProperty("coffee")) {
+  buildSeq1.push("coffee")
+  watchSeq1.push("coffee:watch")
+}
+
+if(config.hasOwnProperty("browserify")) {
+  buildSeq2.push("browserify")
+  watchSeq2.push("browserify:watch")
+}
+
+
+function runTwoSequences(seq1, seq2, callback) {
+  var runSeqArg = []
+
+  if(seq1.length > 0) {
+    runSeqArg.push(seq1);
+  }
+  if(seq2.length > 0) {
+    runSeqArg.push(seq2);
+  }
+
+  if(runSeqArg.length > 0) {
+    runSeqArg.push(callback);
+    runSequence.apply(this, runSeqArg);
+  }
+}
+
 gulp.task('build', function(callback){
-  //here we only want browserify run after coffee complete
-  runSequence(['less', 'coffee'],
-              'browserify',
-              callback);
+  runTwoSequences(buildSeq1, buildSeq2, callback)
 });
 
 
 gulp.task('watch', function(callback){
-  runSequence(['less:watch', 'coffee:watch'],
-              'browserify:watch',
-              callback);
+  runTwoSequences(watchSeq1, watchSeq2, callback)
 });
 
 
 //Note: To make sure BrowserSync work well with session cookie, in 
 //your conifg_custom.py add  "COOKIE_DOMAIN = None"
-gulp.task('sync', ['watch', 'browser-sync']);
+gulp.task('sync', ['watch', 'browser-sync'])

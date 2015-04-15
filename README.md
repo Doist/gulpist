@@ -1,6 +1,5 @@
 
 # Overview 
-
 Gulpist is a static asset build tool. It automates some common front-end developerment tasks such as LESS and Coffee compilation, Browserify bundling, file concatenation, image compression…etc. 
 
 Gulpist is built on [Gulp](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md). It is just a regular Node.js program, so it is extremely flexible and easy to extend and customize. You could use all the available Node.js modules (ex: Browserify) in your task codes, or even write your own customize task.
@@ -8,7 +7,6 @@ Gulpist is built on [Gulp](https://github.com/gulpjs/gulp/blob/master/docs/getti
 
 
 # Get Started
-
 ### System Requirement 
 - [Node.js](https://nodejs.org/)
 - [Gulp](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)
@@ -17,16 +15,14 @@ Gulpist is built on [Gulp](https://github.com/gulpjs/gulp/blob/master/docs/getti
 At your doist_gulp directory, install required Node dependencies:
 ```
 npm install
+
+
+### Task Configuration
+Copy `config.example.js` file to `config.js`. It contains configuration for all the tasks. There you specified things like path of your source .less .coffee. 
 ```
 
 
 # Run Gulp
-### Task Configuration
-`config.js` contains configuration for all the tasks. There you specified things like path of your source .less .coffee. 
-
-Make sure your have correct path configuration before you run Gulp.
-
-
 ### Start Gulp
 All the Gulp tasks are run in the follow command syntax
 
@@ -46,14 +42,6 @@ Feel free to edit `gulpfile.js` to configure what tasks to be run for each of th
 ```
 gulp coffee
 ``` 
-
-
-# Gulpist Directory Structure
-- `gulpfile.js` The main entry point of Gulp. 
-- `config.js` Contains the configuration for all tasks. 
-- `tasks/` This directory contains codes for each individual tasks (LESS, Coffee, Browserify…etc).
-
-
 
 
 # TODO
