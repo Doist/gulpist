@@ -16,7 +16,6 @@ var buffer = require('vinyl-buffer')
 
 
 function browserifyTask(runWatcher, distBuild) {
-
     var sourceFilePath = "./" + config.src;
     var dest = path.parse(config.dest);
     var destDir = "./" + dest.dir;
@@ -50,14 +49,12 @@ function browserifyTask(runWatcher, distBuild) {
 
 gulp.task('browserify', function() {
   browserifyTask(false, false);
-  browserifyTask(false, true);
 });
 
 gulp.task('browserify:watch', function() {
   browserifyTask(true, false);
-  browserifyTask(true, true);
 });
 
-
-
-
+gulp.task('browserify:dist', function() {
+  browserifyTask(false, true);
+});
