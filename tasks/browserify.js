@@ -23,10 +23,10 @@ function browserifyTask(runWatcher, distBuild) {
 
     var bundler = browserify({
         entries: [sourceFilePath],
-        debug: distBuild,
+        debug: !distBuild,
         cache: {}, 
         packageCache: {}, 
-        fullPaths: true
+        fullPaths: false
     });
 
     if(runWatcher) {
