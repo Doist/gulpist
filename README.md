@@ -19,29 +19,29 @@ npm install
 ```
 
 #### 2. Task Configuration
-Copy `config.example.js` file into `config.js`. This file contains configuration for all the tasks.
+Copy `gulpist.example.json` file into `YOUR_STATIC_PROJECT_DIR/gulpist.json`. This file contains configuration for all the tasks.
 
 
 # Run Gulp
 All the Gulp tasks are run in the follow command syntax
 
 ```
-gulp [task name]
+gulp [task name] --config YOUR_STATIC_PROJECT_DIR/gulpist.json
 ```
 
 Here is a list of tasks that are currently supported. Task with `:watch` suffix means it will continuous 
 watch for file change and rerun the task when changes occurred.
 
-- `gulp less`, `gulp less:watch`:  Compile LESS file
-- `gulp coffee`, `gulp coffee:watch`:  Compile LESS file
-- `gulp browserify`: Create a development bundle (with source map), and production bundle (uglified).
-- `gulp browserify:watch`:  Create __only__ the  development bundle, and watch for file change to rebuild.
+- `less`, `less:watch`:  Compile LESS file
+- `coffee`, `coffee:watch`:  Compile LESS file
+- `browserify`: Create a development bundle (with source map), and production bundle (uglified).
+- `browserify:watch`:  Create __only__ the  development bundle, and watch for file change to rebuild.
 
 Batch Tasks:
 
-- `gulp build`: Run "less", "coffee", "browserify" tasks
-- `gulp watch` Run "less:watch", "coffee:watch", "browserify:watch" tasks
-- `gulp sync` Same as `gulp watch`, but it will also start a BrowserSync server which will reload your browser when asset compilation is done.
+- `build`: Run "less", "coffee", "browserify" tasks
+- `watch` Run "less:watch", "coffee:watch", "browserify:watch" tasks
+- `sync` Same as `gulp watch`, but it will also start a BrowserSync server which will reload your browser when asset compilation is done.
 
 Feel free to edit `gulpfile.js` to configure what tasks to be run for each of these three major tasks. You can remove the tasks that you don’t want to run.
 

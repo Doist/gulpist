@@ -1,17 +1,4 @@
-try {
-    config = require('./config');
-} catch(e) {
-    console.error("config.js Error: " + e);
-    process.exit();
-}
-
-try {
-  config.validateConfig();
-} catch(e) {
-  console.error("Error: " + e);
-  process.exit();
-}
-
+var config = require('./config');
 var gulp = require('gulp');
 var requireDir = require('require-dir')
 var runSequence = require('run-sequence');

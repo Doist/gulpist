@@ -1,11 +1,4 @@
-module.exports = {
-
-  // REQUIRED 
-  // Your working directory relative to this file. All your file configuration 
-  // (i.e. less.src) will be relative to this parameter
-  workDir: "../TeamCom",
-
-
+{
   /*
    * "less" / "less:watch" task configuration (Optional)
    *
@@ -17,12 +10,12 @@ module.exports = {
    */
 
 
-//  less: {
-//    watch: "teamcom/apps/web/static/css/**/*.less",
-//    src: "teamcom/apps/web/static/css/**/app.less",
-//    dest: "teamcom/apps/web/static/css/",
-//    prefix: ".less."
-//  },
+  "less": {
+    "watch": "teamcom/apps/web/static/css/**/*.less",
+    "src": "teamcom/apps/web/static/css/**/app.less",
+    "dest": "teamcom/apps/web/static/css/",
+    "prefix": ".less."
+  },
 
 
   /*
@@ -33,11 +26,11 @@ module.exports = {
    *    - prefix  File name prefix to the compiled JS files.
    */
 
-//  coffee: {
-//    src: "teamcom/apps/web/static/js/**/*.coffee",
-//    dest: "teamcom/apps/web/static/js/",
-//    prefix: ".coffee."
-//  },
+  "coffee": {
+    "src": "teamcom/apps/web/static/js/**/*.coffee",
+    "dest": "teamcom/apps/web/static/js/",
+    "prefix": ".coffee."
+  },
 
 
   /*
@@ -47,16 +40,8 @@ module.exports = {
    *    - dest    Detination file path for the bundled JS file. (MUST include filename)
    */
 
-//  browserify: {
-//    src: "teamcom/apps/web/static/js/.coffee.app.js",
-//    dest: "teamcom/apps/web/static/js/bundle.js"
-//  },
-//
-  
-  validateConfig: function() {
-    if(!this.hasOwnProperty("workDir")) {
-      throw "Configuration error. 'workDir' must be set"
-    }
+  "browserify": {
+    "src": "teamcom/apps/web/static/js/.coffee.app.js",
+    "dest": "teamcom/apps/web/static/js/bundle.js"
   }
-
 }
