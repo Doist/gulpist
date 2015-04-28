@@ -2,7 +2,6 @@
   "name": "doist_gulp",
   "version": "0.0.0",
   "devDependencies": {
-    "browser-sync": "^2.2.2",
     "browserify": "^9.0.3",
     "coffee-react-transform": "^2.4.0",
     "coffee-script": "^1.9.1",

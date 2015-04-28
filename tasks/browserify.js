@@ -10,7 +10,6 @@ var watchify = require('watchify');
 var transform = require('vinyl-transform');
 var rename = require("gulp-rename");
 var config = require('../config').browserify
-var browserSync = require('browser-sync');
 
 var buffer = require('vinyl-buffer')
 
@@ -40,8 +39,7 @@ function browserifyTask(runWatcher, distBuild) {
             .pipe(buffer())
             .pipe(gulpif(distBuild, uglify()))
             .pipe(gulp.dest(destDir))
-            .pipe(notify({title: "Broserify - Bundle Updated", message: "<%= file.relative %>"}))
-            .pipe(browserSync.reload({stream:true}));
+            .pipe(notify({title: "Broserify - Bundle Updated", message: "<%= file.relative %>"}));
       });
 
     bundler.emit("update");

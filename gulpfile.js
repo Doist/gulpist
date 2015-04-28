@@ -66,7 +66,3 @@ gulp.task('watch', function(callback){
   runTwoSequences(watchSeq1, watchSeq2, callback)
 });
 
-
-//Note: To make sure BrowserSync work well with session cookie, in 
-//your conifg_custom.py add  "COOKIE_DOMAIN = None"
-gulp.task('sync', ['watch', 'browser-sync'])

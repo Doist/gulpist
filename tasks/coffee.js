@@ -8,7 +8,6 @@ var rename = require("gulp-rename");
 var newer = require('gulp-newer');
 var gulpif = require('gulp-if');
 var config = require('../config').coffee
-var browserSync = require('browser-sync');
 var runSequence = require('run-sequence');
 
 var coffeeJSX = require('gulp-cjsx');

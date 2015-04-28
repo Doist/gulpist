@@ -8,12 +8,10 @@ var path = require('path');
 var newer = require('gulp-newer');
 var config = require('../config').less
 var runSequence = require('run-sequence');
-var browserSync = require('browser-sync');
 
 
 function buildLess() {
   return gulp.src(config.src)
-    .on('end', browserSync.reload)
     .pipe(less())
     .pipe(rename({prefix: config.prefix}))
     .pipe(autoprefixer())
