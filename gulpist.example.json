@@ -11,9 +11,9 @@
 
 
   "less": {
-    "watch": "teamcom/apps/web/static/css/**/*.less",
-    "src": "teamcom/apps/web/static/css/**/app.less",
-    "dest": "teamcom/apps/web/static/css/",
+    "watch": "static/css/**/*.less",
+    "src": "static/css/**/app.less",
+    "dest": "static/css/",
     "prefix": ".less."
   },
 
@@ -27,8 +27,8 @@
    */
 
   "coffee": {
-    "src": "teamcom/apps/web/static/js/**/*.coffee",
-    "dest": "teamcom/apps/web/static/js/",
+    "src": "static/js/**/*.coffee",
+    "dest": "static/js/",
     "prefix": ".coffee."
   },
 
@@ -41,7 +41,7 @@
    */
 
   "browserify": {
-    "src": "teamcom/apps/web/static/js/.coffee.app.js",
-    "dest": "teamcom/apps/web/static/js/bundle.js"
+    "src": "static/js/.coffee.app.js",
+    "dest": "static/js/bundle.js"
   }
 }
