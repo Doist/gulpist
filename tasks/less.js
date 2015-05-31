@@ -13,6 +13,16 @@ var runSequence = require('run-sequence');
 function buildLess() {
   return gulp.src(config.src)
     .pipe(less())
+    .on("error", notify.onError({
+        title: "LESS Error",  
+        subtitle: function(error) {
+          if (error.filename) {
+            var filename = path.parse(error.filename).base;
+            return filename
+          }
+        },
+        message: "<%= error.name %>: <%= error.message %> \n <%= error %>"
+    }))
     .pipe(rename({prefix: config.prefix}))
     .pipe(autoprefixer())
     .pipe(gulp.dest(config.dest))
