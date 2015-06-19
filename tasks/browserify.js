@@ -3,6 +3,7 @@ var gulpif = require('gulp-if');
 var uglify = require('gulp-uglify');
 var gutil = require('gulp-util');
 var notify = require("gulp-notify");
+var sourcemaps = require("gulp-sourcemaps");
 var path = require('path');
 var source = require('vinyl-source-stream');
 var browserify = require('browserify');
@@ -37,7 +38,9 @@ function browserifyTask(runWatcher, distBuild) {
             .on("error", notify.onError({title: "Broserify Error", message: "<%= error.message %>"}))
             .pipe(source(destFileName))
             .pipe(buffer())
+            .pipe(sourcemaps.init())
             .pipe(gulpif(distBuild, uglify()))
+            .pipe(sourcemaps.write('./maps'))
             .pipe(gulp.dest(destDir))
             .pipe(notify({title: "Broserify - Bundle Updated", message: "<%= file.relative %>"}));
       });
