@@ -35,7 +35,7 @@ function browserifyTask(runWatcher, distBuild) {
 
     bundler.on('update', function () {
           bundler.bundle()
-            .on("error", notify.onError({title: "Broserify Error", message: "<%= error.message %>"}))
+            .on("error", notify.onError({title: "Broserify Error", message: "<%= error %>"}))
             .pipe(source(destFileName))
             .pipe(buffer())
             .pipe(sourcemaps.init())
