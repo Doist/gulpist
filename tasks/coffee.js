@@ -1,9 +1,8 @@
 var gulp = require('gulp');
+var gulpif = require('gulp-if');
+var jshint = require('gulp-jshint');
 var path = require('path');
-var gutil = require('gulp-util');
 var notify = require("gulp-notify");
-var debug = require('gulp-debug');
-var coffee = require('gulp-coffee');
 var rename = require("gulp-rename");
 var newer = require('gulp-newer');
 var gulpif = require('gulp-if');
@@ -12,6 +11,7 @@ var runSequence = require('run-sequence');
 
 var coffeeJSX = require('gulp-cjsx');
 
+var jshinst_config = require('./jshint_config.js');
 
 
 function buildCoffee(is_incremental_build) {
@@ -36,6 +36,8 @@ function buildCoffee(is_incremental_build) {
     }))
     .pipe(rename({prefix: config.prefix}))
     .pipe(notify({title:"Coffee", message: "Coffee compile succeeded: <%= file.relative %>"}))
+    .pipe(gulpif(config.jshint, jshint(jshinst_config)))
+    .pipe(gulpif(config.jshint, jshint.reporter('default')))
     .pipe(gulp.dest(config.dest));
 }
 
