@@ -32,8 +32,6 @@ cd YOUR_STATIC_PROJECT_DIR
 gulpist [task name]
 ```
 
-Important: `~/my_static_dir/` should have `gulpist_config.json`.
-
 Here is a list of tasks that are currently supported. Task with `:watch` suffix means it will continuous 
 watch for file change and rerun the task when changes occurred.
 
