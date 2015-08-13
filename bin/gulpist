@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+export NODE_PATH=$NODE_PATH:"$(npm root -g)"
 GULPFILE=$( node -e "var path = require.resolve('gulpist'); console.log(path);" )
 GULPISTPWD=$( pwd )
 gulp --gulpistpwd $GULPISTPWD --gulpfile $GULPFILE $@
