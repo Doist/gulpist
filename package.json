@@ -50,6 +50,7 @@
     "event-stream": "^3.3.2",
     "glob": "^7.0.0",
     "grunt-spritesmith": "^6.2.0",
+    "gulp-babel": "^6.1.2",
     "gulp-rename": "^1.2.2",
     "jasmine": "^2.4.1"
   }
