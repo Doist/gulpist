@@ -44,4 +44,13 @@
     "src": "static/js/.coffee.app.js",
     "dest": "static/js/bundle.js"
   }
+
+    "sprite": {
+        "imgSrc": "images/icons/*.png",
+        "destDir": "images/",
+        "destImgName": "cmp_images.png",
+        "destCssName": "cmp_images.css",
+        "imgPath": "static/images/"
+    }
+
 }
