@@ -8,8 +8,8 @@
     "coffee-react-transform": "^2.4.0",
     "coffee-script": "^1.9.1",
     "coffee-watcher": "^1.6.0",
-    "event-stream": "^3.3.2",
-    "glob": "^7.0.0",
+    "event-stream": "^3.3.3",
+    "glob": "^7.0.5",
     "gulp": "^3.8.11",
     "gulp-autoprefixer": "^2.1.0",
     "gulp-babel": "^6.1.2",
@@ -24,14 +24,17 @@
     "gulp-rename": "^1.2.2",
     "gulp-shell": "^0.3.0",
     "gulp-sourcemaps": "^1.5.2",
-    "gulp-uglify": "^1.2.0",
-    "gulp-util": "^3.0.4",
+    "gulp-uglify": "^1.5.4",
+    "gulp-util": "^3.0.7",
     "gulp-watch": "~4.1.1",
+    "gulp.spritesmith": "^6.2.1",
     "less-watcher": "^1.2.0",
+    "merge-stream": "^1.0.0",
     "orchestrator": "^0.3.7",
     "path": "^0.11.14",
     "require-dir": "~0.1.0",
-    "run-sequence": "^1.0.2",
+    "run-sequence": "^1.2.2",
+    "stream-browserify": "^2.0.1",
     "through": "^2.3.6",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.0.0",
@@ -40,11 +43,6 @@
     "yargs": "^3.8.0"
   },
   "description": "Gulpist is a static asset build tool. It automates some common front-end developerment tasks such as LESS and Coffee compilation, Browserify bundling, file concatenation, image compression, etc.",
-  "devDependencies": {
-    "gulp-util": "^3.0.7",
-    "merge-stream": "^1.0.0",
-    "stream-browserify": "^2.0.1"
-  },
   "directories": {
     "lib": "./lib"
   },
@@ -52,5 +50,5 @@
   "main": "./lib/gulpist",
   "name": "gulpist",
   "repository": "https://github.com/Doist/gulpist",
-  "version": "0.7.2"
+  "version": "0.7.3"
 }
