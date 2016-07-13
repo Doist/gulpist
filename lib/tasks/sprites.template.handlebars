@@ -10,7 +10,13 @@
 }
 {{/each}}
 
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+       only screen and (   min--moz-device-pixel-ratio: 2),
+       only screen and (     -o-min-device-pixel-ratio: 2/1),
+       only screen and (        min-device-pixel-ratio: 2),
+       only screen and (                min-resolution: 192dpi),
+       only screen and (                min-resolution: 2dppx) {
+
 {{#each retina_groups}}
     .cmp_{{ normal.name }} {
       background: url({{{retina.image}}}) 0 0 no-repeat;
