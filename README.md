@@ -12,13 +12,13 @@ System Requirement
 - [Node.js](https://nodejs.org/)
 - [Gulp](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)
 
-#### 1. Install Node Dependencies
+### 1. Install Node Dependencies
 
 ```
 npm install gulpist -g
 ```
 
-#### 2. Task Configuration
+### 2. Task Configuration
 
 Copy `gulpist_config.example.json` file into `YOUR_STATIC_PROJECT_DIR/gulpist_config.json`. This file contains configuration for all the tasks.
 
@@ -39,7 +39,7 @@ Here is a list of tasks and their required configuration. Task with `:watch` suf
 watch for file change and rerun the task when changes occurred.
 
 
-#### less
+### less
 
 ```
 gulpist less
@@ -61,7 +61,7 @@ Configuration
 
 
 
-#### coffee
+### coffee
 
 ```
 gulpist coffee
@@ -82,7 +82,7 @@ Configuration
 - `prefix`: Optional. If specified, the task will output the result file with the given prefix.
 
 
-#### browserify
+### browserify
 
 ```
 gulpist browserify
@@ -99,7 +99,7 @@ Configuration
 ```
 
 
-#### babel
+### babel
 
 ```
 gulpist babel
@@ -120,7 +120,7 @@ Configuration
 
 
 
-#### sprite
+### sprite
 
 ```
 gulpist sprite
