@@ -182,23 +182,6 @@ Configuration
 
 - `cssTemplate`: Should point to the path of the CSS template file. Use the file `css_example.template.handlebars` as an example. If you're not including any retina properties in your gulpist settings, feel free to remove the retina styles from the example.
 
-- `cssHandlebarsHelpers`: Optional. Should point to the path of the JS file containing the helpers. The content of this file should be an object where each key is the name of the helper and its value is the helper function itself. Example:
-```js
-{
-    lowerCase: function(filename) {
-        return filename.toLowerCase();
-    },
-    upperCase: function(filename) {
-        return filename.toUpperCase();
-    }
-}
-```
-Which would then be used in the CSS template file as:
-```css
-.cmp_{{ lowerCase name }} {
-}
-```
-Refer to the [Handlebars documentation](http://handlebarsjs.com/#helpers) if needed.
 
 #### notes
 All of the retina settings (`retinaSrcFilter`, `retinaImgName` and `retinaImgPath`) are optional. But if you add one of them, you should add all of them.
