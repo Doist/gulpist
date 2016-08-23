@@ -142,8 +142,7 @@ Configuration
         "retinaImgPath": "/static/images/cmp_images@2x.png",
         "imgOptim": false,
         "sortImgsByHeight": true,
-        "cssTemplate": "css/cmp_images.template.handlebars",
-        "cssHandlebarsHelpers": "js/gulpist.sprite.cmp_images.js"
+        "cssTemplate": "css/cmp_images.template.handlebars"
     },
     {
         "imgSrc": "images/tips/*.png",
@@ -157,8 +156,7 @@ Configuration
         "retinaImgPath": "/static/images/cmp_tips@2x.png",
         "imgOptim": true,
         "sortImgsByHeight": false,
-        "cssTemplate": "css/cmp_tips.template.handlebars",
-        "cssHandlebarsHelpers": "js/gulpist.sprite.cmp_tips.js"
+        "cssTemplate": "css/cmp_tips.template.handlebars"
     },...
 ]
 ```
