@@ -157,6 +157,12 @@ Configuration
         "imgOptim": true,
         "sortImgsByHeight": false,
         "cssTemplate": "css/cmp_tips.template.handlebars"
+    },
+    {
+        "imgSrc": "images/social_media/icons/*.svg",
+        "imgName": "images/social_media/social_media_icons.svg",
+        "cssName": "css/social_media_icons.less",
+        "cssTemplate": "css/social_media_icons.template.handlebars"
     },...
 ]
 ```
@@ -181,7 +187,7 @@ Configuration
 - `cssTemplate`: Should point to the path of the CSS template file. Use the file `css_example.template.handlebars` as an example. If you're not including any retina properties in your gulpist settings, feel free to remove the retina styles from the example.
 
 
-#### notes
+#### Notes
 All of the retina settings (`retinaSrcFilter`, `retinaImgName` and `retinaImgPath`) are optional. But if you add one of them, you should add all of them.
 
 Avoid image filenames containing `-` or spaces. Make sure the retina images are in the same folder as the normal ones. For retina images just add the `@2x` suffix.
@@ -189,3 +195,6 @@ Avoid image filenames containing `-` or spaces. Make sure the retina images are 
 You can use the name of the file as a class name in your CSS–as shown in the `css_example.template.handlebars` file. You can further tweak this by adding a helper with the `cssHandlebarsHelpers` property.
 
 Have in mind that the `gulpist sprite` command is generating a new CSS file. For this CSS file to be loaded by the browser you might need to `@import` it into your main CSS file.
+
+#### A note on SVG sprites
+When making an SVG sprite you only need to declare the following properties: `imgSrc`, `imgName`, `cssName`, `cssTemplate`. Everything else will be ignored. Follow the example above if you're having trouble.
