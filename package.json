@@ -51,5 +51,8 @@
   "main": "./lib/gulpist",
   "name": "gulpist",
   "repository": "https://github.com/Doist/gulpist",
-  "version": "0.7.5"
+  "version": "0.7.5",
+  "devDependencies": {
+    "gulp-svg-sprite": "^1.3.6"
+  }
 }
