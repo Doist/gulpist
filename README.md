@@ -107,6 +107,17 @@ Configuration
 }
 ```
 
+#### broserify:watch didn't trigger when relevant file is updated?
+
+
+`broserify:watch` is quite picky in term of __file path letter casing__. So suppose you have a module file `Users.js`, but you are
+importing the module as:
+```
+Users = require('./users.js')  // lower casing
+```
+The `browserify:watch` will not work in this case.
+
+
 
 ---
 
