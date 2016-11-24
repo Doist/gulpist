@@ -53,5 +53,5 @@
   "main": "./lib/gulpist",
   "name": "gulpist",
   "repository": "https://github.com/Doist/gulpist",
-  "version": "0.7.5"
+  "version": "0.8.0"
 }
