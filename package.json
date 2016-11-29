@@ -8,7 +8,6 @@
     "coffee-react-transform": "^2.4.0",
     "coffee-script": "^1.9.1",
     "coffee-watcher": "^1.6.0",
-    "dr-svg-sprites": "^0.9.32",
     "envify": "^3.4.1",
     "event-stream": "^3.3.3",
     "glob": "^7.0.5",
