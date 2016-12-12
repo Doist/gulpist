@@ -57,8 +57,12 @@ Configuration
 }
 ```
 
-- `prefix`: Optional. If specified, the task will output the result file with the given prefix.
+| Property | Optional | Description                                                               |
+| -------- | -------- | ------------------------------------------------------------------------- |
+| `prefix` | True     | If specified, the task will output the result file with the given prefix. |
 
+
+---
 
 
 ### coffee
@@ -79,7 +83,12 @@ Configuration
 }
 ```
 
-- `prefix`: Optional. If specified, the task will output the result file with the given prefix.
+| Property | Optional | Description                                                               |
+| -------- | -------- | ------------------------------------------------------------------------- |
+| `prefix` | True     | If specified, the task will output the result file with the given prefix. |
+
+
+---
 
 
 ### browserify
@@ -110,6 +119,9 @@ The `browserify:watch` will not work in this case.
 
 
 
+---
+
+
 ### babel
 
 ```
@@ -127,8 +139,12 @@ Configuration
 }
 ```
 
-- `prefix`: Optional. If specified, the task will output the result file with the given prefix.
+| Property | Optional | Description                                                               |
+| -------- | -------- | ------------------------------------------------------------------------- |
+| `prefix` | True     | If specified, the task will output the result file with the given prefix. |
 
+
+---
 
 
 ### sprite
@@ -168,44 +184,57 @@ Configuration
         "imgOptim": true,
         "sortImgsByHeight": false,
         "cssTemplate": "css/cmp_tips.template.handlebars"
-    },
-    {
-        "imgSrc": "images/social_media/icons/*.svg",
-        "imgName": "images/social_media/social_media_icons.svg",
-        "cssName": "css/social_media_icons.less",
-        "cssTemplate": "css/social_media_icons.template.handlebars"
     },...
 ]
 ```
 
+| Property           | Optional | Description                                                                                                                                                 |
+| ------------------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `imgPath`          | False    | URL path of the sprite image that will be referenced in the CSS file.                                                                                       |
+| `retinaImgPath`    | True     | URL path of the retina sprite image that will be referenced in the CSS file.                                                                                |
+| `lessName`         | True     | If specified, the task will also output a .less file with the given name.                                                                                   |
+| `imgOptim`         | True     | If set to `true` will use gifsicle for GIF, jpegtran for JPEG and optipng for PNG. Set to `false` by default.                                               |
+| `sortImgsByHeight` | True     | By default, images are sort by height (shorter on top, tallest on bottom). If set to `false`, images will be sort alphabetically. Set to `true` by default. |
+| `cssTemplate`      | False    | Should point to the path of the CSS template file. Use the file `css_example.template.handlebars` as an example.                                            |
 
-- `imgPath`: URL path of the sprite image that will be referenced in the CSS file.
-
-```css
-.cmp_activity_added_comment {
-  background: url(/static/images/cmp_images.png) 0 0 no-repeat;
-  ...
-}
-```
-- `retinaImgPath`: Optional. URL path of the retina sprite image that will be referenced in the CSS file.
-
-- `lessName`: Optional. If specified, the task will also output a .less file with the given name.
-
-- `imgOptim`: Optional. Default: `false`. If set to `true` will use gifsicle for GIF, jpegtran for JPEG, optipng for PNG and svgo for SVG.
-
-- `sortImgsByHeight`: Optional. Default: `true`. By default, images are sort by height (shorter on top, tallest on bottom). If set to `false`, images will be sort alphabetically.
-
-- `cssTemplate`: Should point to the path of the CSS template file. Use the file `css_example.template.handlebars` as an example. If you're not including any retina properties in your gulpist settings, feel free to remove the retina styles from the example.
 
 
 #### Notes
-All of the retina settings (`retinaSrcFilter`, `retinaImgName` and `retinaImgPath`) are optional. But if you add one of them, you should add all of them.
+All of the retina settings (`retinaSrcFilter`, `retinaImgName` and `retinaImgPath`) are optional. But if you add one of them, you should add all of them. If you're not including any retina properties in your gulpist settings, feel free to remove the retina styles from the CSS template file as well.
 
 Avoid image filenames containing `-` or spaces. Make sure the retina images are in the same folder as the normal ones. For retina images just add the `@2x` suffix.
 
-You can use the name of the file as a class name in your CSS–as shown in the `css_example.template.handlebars` file. You can further tweak this by adding a helper with the `cssHandlebarsHelpers` property.
+You can use the name of the file as a class name in your CSS–as shown in the `css_example.template.handlebars` file.
 
 Have in mind that the `gulpist sprite` command is generating a new CSS file. For this CSS file to be loaded by the browser you might need to `@import` it into your main CSS file.
 
-#### A note on SVG sprites
-When making an SVG sprite you only need to declare the following properties: `imgSrc`, `imgName`, `cssName`, `cssTemplate`. Everything else will be ignored. Follow the example above if you're having trouble.
+
+---
+
+
+### svg-sprite
+
+```
+gulpist svg-sprite
+```
+
+Configuration
+```json
+"svg-sprite": [
+    {
+        "imgSrc": "images/social_media/icons/*.svg",
+        "imgName": "../images/social_media/social_media_icons.svg",
+        "imgCssPath": "/static/apps/landing_pages/images/social_media/social_media_icons.svg",
+        "cssName": "social_media_icons.less",
+        "cssTemplate": "css/social_media_icons.template.less"
+    },...
+]
+```
+
+| Property      | Description                                                                        |
+| ------------- | ---------------------------------------------------------------------------------- |
+| `imgSrc`      | The files that are being merged into a sprite.                                     |
+| `imgName`     | Relative path, from the location of the CSS file, where the image should be saved. |
+| `imgCssPath`  | Absolute path for the image, used on CSS only.                                     |
+| `cssName`     | Name for the CSS file.                                                             |
+| `cssTemplate` | Path and file of the Mustache template.                                            |

@@ -1,0 +1,14 @@
+// For more options, refer to https://github.com/jkphl/svg-sprite/blob/master/docs/templating.md
+
+.svg_icon {
+    background-image: url({{{ cssSpritePath }}});
+    background-repeat: no-repeat;
+}
+
+{{#shapes}}
+.svg_icon--{{ base }} {
+    background-position: {{ position.absolute.xy }};
+    height: {{ height.inner }}px;
+    width: {{ width.inner }}px;
+}
+{{/shapes}}
