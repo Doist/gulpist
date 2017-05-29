@@ -240,3 +240,31 @@ Configuration
 | `destCSSFolder` | Destination folder for the CSS output.                                             |
 | `cssName`       | Name for the CSS file.                                                             |
 | `cssTemplate`   | Path and file of the Mustache template.                                            |
+
+
+---
+
+
+### jade
+
+Compiles Jade files into HTML.
+Have in mind that `gulpist watch` will also compile the jade files that were recently saved, if it is specified in the configuration file.
+
+```
+gulpist jade
+```
+
+Configuration
+```json
+"jade": {
+    "src": "**/*.jade",
+    "dest": ".",
+    "indentation": "    "
+}
+```
+
+| Property           | Optional | Description                                            |
+| ------------------ | -------- | ------------------------------------------------------ |
+| `src`              | False    | The files that are being compiled.                     |
+| `dest`             | False    | Folder where to put the compiled HTML files.           |
+| `indentation`      | True     | If specified, will be used as the indentation string.  |
