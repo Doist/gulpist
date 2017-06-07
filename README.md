@@ -225,19 +225,21 @@ Configuration
         "imgSrc": "images/social_media/icons/*.svg",
         "imgName": "../images/social_media/social_media_icons.svg",
         "imgCssPath": "/static/apps/landing_pages/images/social_media/social_media_icons.svg",
+        "cssDestDir": "/less",
         "cssName": "social_media_icons.less",
         "cssTemplate": "css/social_media_icons.template.less"
     },...
 ]
 ```
 
-| Property      | Description                                                                        |
-| ------------- | ---------------------------------------------------------------------------------- |
-| `imgSrc`      | The files that are being merged into a sprite.                                     |
-| `imgName`     | Relative path, from the location of the CSS file, where the image should be saved. |
-| `imgCssPath`  | Absolute path for the image, used on CSS only.                                     |
-| `cssName`     | Name for the CSS file.                                                             |
-| `cssTemplate` | Path and file of the Mustache template.                                            |
+| Property        | Description                                                                        |
+| --------------- | ---------------------------------------------------------------------------------- |
+| `imgSrc`        | The files that are being merged into a sprite.                                     |
+| `imgName`       | Relative path, from the location of the CSS file, where the image should be saved. |
+| `imgCssPath`    | Absolute path for the image, used on CSS only.                                     |
+| `cssDestDir`    | Destination folder for the CSS output.                                             |
+| `cssName`       | Name for the CSS file.                                                             |
+| `cssTemplate`   | Path and file of the Mustache template.                                            |
 
 
 ---
