@@ -4,7 +4,7 @@
     "gulpist": "./bin/gulpist"
   },
   "dependencies": {
-    "browserify": "^9.0.3",
+    "browserify": "^14.4.0",
     "coffee-react-transform": "^2.4.0",
     "coffee-script": "^1.9.1",
     "coffee-watcher": "^1.6.0",
@@ -43,7 +43,7 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.0.0",
     "vinyl-transform": "^1.0.0",
-    "watchify": "^2.4.0",
+    "watchify": "^3.9.0",
     "yargs": "^3.8.0"
   },
   "description": "Gulpist is a static asset build tool. It automates some common front-end developerment tasks such as LESS and Coffee compilation, Browserify bundling, file concatenation, image compression, etc.",
