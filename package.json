@@ -53,7 +53,7 @@
   "main": "./lib/gulpist",
   "name": "gulpist",
   "repository": "https://github.com/Doist/gulpist",
-  "version": "8.0.1",
+  "version": "8.1.0",
   "devDependencies": {
     "gulp-count": "^0.3.0",
     "gulp-debug": "^2.1.2"
