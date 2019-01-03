@@ -24,7 +24,7 @@
     "gulp-newer": "^0.5.2",
     "gulp-notify": "^2.2.0",
     "gulp-rename": "^1.4.0",
-    "gulp-shell": "^0.3.0",
+    "gulp-shell": "^0.6.5",
     "gulp-sourcemaps": "^1.12.1",
     "gulp-svg-sprite": "^1.5.0",
     "gulp-uglify": "^1.5.4",
